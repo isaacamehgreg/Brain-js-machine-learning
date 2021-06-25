@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/isaacamehgreg/Brain-js-machine-learning/issues"
   },
-  "homepage": "https://github.com/isaacamehgreg/Brain-js-machine-learning#readme"
+  "homepage": "https://github.com/isaacamehgreg/Brain-js-machine-learning#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
