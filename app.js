@@ -6,6 +6,8 @@ require('dotenv/config');
 
 const app = express();
 
+const postRoutes = require('./routes/posts');
+
 
 //MIDDLEWARES
 // app.use('/post', ()=>{
@@ -18,7 +20,7 @@ const app = express();
 
 //ROUTES
 //get,post,delete,patch,put
-const postRoutes = require('./routes/posts');
+
 
 app.get('/', (req,res)=>{res.send('this is home page')});
 
