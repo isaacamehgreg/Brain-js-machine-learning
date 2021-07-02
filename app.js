@@ -2,11 +2,12 @@ const express = require('express');
 
 const mongoose = require('mongoose');
 
-require('dotenv/config');
+require('dotenv/config'); //env guy
 
 const app = express();
 
-const postRoutes = require('./routes/posts');
+//import post route
+const postsRoute = require('./routes/posts');
 
 
 //MIDDLEWARES
@@ -22,14 +23,32 @@ const postRoutes = require('./routes/posts');
 //get,post,delete,patch,put
 
 
-app.get('/', (req,res)=>{res.send('this is home page')});
+app.get('/', (req,res)=>{
+    res.send('this is home page')
+});
 
-//app.use('/posts', postRoutes);
+
+
+//post routers
+app.use('/posts', postsRoute);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //connect to db
-mongoose.connect(process.env.DB_CONNECTION, {userNewUrlParser: true},()=> console.log('connected to db')
-
-);
+mongoose.connect(process.env.DB_CONNECTION, {userNewUrlParser: true},()=> console.log('connected to db'));
 
 
 //to listene
