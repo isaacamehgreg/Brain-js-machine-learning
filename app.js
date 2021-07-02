@@ -1,5 +1,7 @@
 const express = require('express');
 
+const mongoose = require('mongoose');
+require('dotenv/config')
 const app = express();
 
 
@@ -23,6 +25,10 @@ app.get('/post', (req,res)=>{
 });
 
 
+//connect to db
+mongoose.connect(process.env.DB_CONNECTION, {userNewUrlParser: true},()=> console.log('connected to db')
+
+);
 
 
 //to listene
