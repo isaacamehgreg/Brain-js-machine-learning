@@ -2,9 +2,16 @@ const express = require('express');
 
 const mongoose = require('mongoose');
 
+const bodyParser = require('body-parser');
+
 require('dotenv/config'); //env guy
 
 const app = express();
+
+//add body parser as a middle where for any posts that is comming to app
+app.use(bodyParser.json());
+
+
 
 //import post route
 const postsRoute = require('./routes/posts');
