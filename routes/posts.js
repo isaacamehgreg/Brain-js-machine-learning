@@ -13,7 +13,7 @@ router.get('/specific', (req,res)=>{
     res.send('this is a specific post');
 });
 
-//create
+//create post
 router.post('/post',(req,res)=>{
     console.log(req.body);
     const post = new Post({
