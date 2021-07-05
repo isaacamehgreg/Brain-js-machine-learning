@@ -33,9 +33,23 @@ router.post('/post', async(req,res)=>{
 
 
 //a single post
-router.get('/:postId',   (req,res) => {
-     console.log(req.params.postId);
+router.get('/:postId',  async (req,res) => {
+    try{
+    const post = await Post.findById(req.params.postId);
+    res.send(post);
+    }catch(err){
+        res.json({msg : err})
+    }
 });
+
+router.delete('/:postId', async (req,res) => {
+    try{
+    const post = await Post.remove(req.params.postId);
+    res.send(' deleted successfull');
+    }catch(err){
+        res.json({msg : err})
+    }
+})
 
 
 module.exports = router;
