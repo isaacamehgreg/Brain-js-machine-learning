@@ -33,7 +33,7 @@ router.post('/post', async(req,res)=>{
 
 
 //a single post
-router.get("/:postId",   (req,res) => {
+router.get('/:postId',   (req,res) => {
      console.log(req.params.postId);
 });
 
