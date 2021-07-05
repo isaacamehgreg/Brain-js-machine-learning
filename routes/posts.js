@@ -4,28 +4,35 @@ const Post = require('../models/Post');
 
 
 
-
-router.get('/', (req,res)=>{
-    res.send('we are here using router post');
+//get all post
+router.get('/', async (req,res)=>{
+    try{
+        const posts = await Post.find();
+        res.json(posts);
+    }catch(err){
+        res.json({msg:err})
+    }
 });
 
-router.get('/specific', (req,res)=>{
-    res.send('this is a specific post');
-});
+
+
+
 
 //create post
-router.post('/post',(req,res)=>{
+router.post('/post', async(req,res)=>{
     console.log(req.body);
     const post = new Post({
-        title: req.body.tittle,
+        title: req.body.title,
         description: req.body.description,
     })
-    post.save()
-    .then(data=>{
-        res.json(data);
-    })
-    .catch(err => res.json({msg: err}))
+    try{
+    const savedPost = await post.save();
+      res.json(savedPost);
+    }catch(err){
+      res.json({msg : err})
+    }
 });
+
 
 
 module.exports = router;
