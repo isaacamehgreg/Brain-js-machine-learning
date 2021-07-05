@@ -42,6 +42,7 @@ router.get('/:postId',  async (req,res) => {
     }
 });
 
+//delete post
 router.delete('/:postId', async (req,res) => {
     try{
     const deletePost = await Post.remove({_id: req.params.postId});
@@ -50,6 +51,21 @@ router.delete('/:postId', async (req,res) => {
         res.json({msg : err})
     }
 })
+
+//upate post
+router.patch('/:postId', async (req,res) => {
+    try{
+    const updatePost = await Post.updateOne(
+        
+        {_id: req.params.postId}, 
+        {$set: { title: req.body.title }} 
+
+        );
+        res.json(updatePost);
+    }catch(err){
+        res.json({msg:err})
+    }
+});
 
 
 module.exports = router;
