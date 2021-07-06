@@ -34,9 +34,12 @@ router.post('/post', async(req,res)=>{
 
 //a single post
 router.get('/:postId',  async (req,res) => {
+    
     try{
     const post = await Post.findById(req.params.postId);
     res.send(post);
+ 
+
     }catch(err){
         res.json({msg : err})
     }
@@ -46,7 +49,7 @@ router.get('/:postId',  async (req,res) => {
 router.delete('/:postId', async (req,res) => {
     try{
     const deletePost = await Post.remove({_id: req.params.postId});
-        res.json(deletePost);
+    res.json(deletePost);
     }catch(err){  
         res.json({msg : err})
     }

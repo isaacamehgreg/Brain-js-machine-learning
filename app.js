@@ -4,12 +4,15 @@ const mongoose = require('mongoose');
 
 const bodyParser = require('body-parser');
 
+const cors = require('cors')
+
 require('dotenv/config'); //env guy
 
 const app = express();
 
 //add body parser as a middle where for any posts that is comming to app
 app.use(bodyParser.json());
+app.use(cors());
 
 
 
